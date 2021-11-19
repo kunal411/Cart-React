@@ -11,14 +11,36 @@ class CartItem extends React.Component {
         }
     }
 
-    decreaseQuantity(){
-        this.state.qty -= 1;
+    decreaseQuantity = () => {
+        if(this.state.qty == 0){
+            return;
+        }
+        // this.state.qty -= 1;
+        // Set state form 1
+        // this.setState({
+        //     qty: this.state.qty - 1
+        // });
+
+        // Set state form 2 - if previous state is required
+        this.setState((prevState) => {
+            return{
+                qty: prevState.qty - 1
+            }
+        });
+    }
+
+    increaseQuantity = () => {
+        this.setState((prevState) => {
+            return{
+                qty: prevState.qty + 1
+            }
+        });
     }
     render(){
         return(
             <div className="cart-item">
                 <div className = "left-block">
-                    <img style = {style.images}/>
+                    <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000" style = {style.images}/>
                 </div>
                 <div className = "right-block">
                     <div>{this.state.title}</div>
@@ -30,12 +52,13 @@ class CartItem extends React.Component {
                             alt="increase" 
                             className="action-icons" 
                             src="https://cdn-icons-png.flaticon.com/512/1828/1828899.png"
-                            onClick={this.decreaseQuantity.bind(this)}
+                            onClick={this.decreaseQuantity}
                         />
                         <img 
                             alt="deccrease" 
                             className="action-icons" 
                             src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png"
+                            onClick={this.increaseQuantity}
                         />
                         <img 
                             alt="delete" 
@@ -51,10 +74,11 @@ class CartItem extends React.Component {
 
 const style = {
     images : {
-        height: 110,
-        width: 110,
+        height: 180,
+        width: 160,
         borderRadius: 4,
-        background: '#CCC'
+        borderWidth: 1,
+        borderColor: 'black'
     }
 }
 
