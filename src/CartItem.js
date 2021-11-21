@@ -1,15 +1,15 @@
 import React from "react";
 
 class CartItem extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            price: 999,
-            title: 'Mobile Phone',
-            qty: 1,
-            img: ''
-        }
-    } 
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         price: 999,
+    //         title: 'Mobile Phone',
+    //         qty: 1,
+    //         img: ''
+    //     }
+    // } 
 
     decreaseQuantity = () => {
         if(this.state.qty == 0){
@@ -37,15 +37,16 @@ class CartItem extends React.Component {
         });
     }
     render(){
+        const {qty, price, title, img} = this.props.product;
         return(
             <div className="cart-item">
                 <div className = "left-block">
-                    <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000" style = {style.images}/>
+                    <img src={img} style = {style.images}/>
                 </div>
                 <div className = "right-block">
-                    <div>{this.state.title}</div>
-                    <div>Rs {this.state.price}</div>
-                    <div>Qty: {this.state.qty}</div>
+                    <div>{title}</div>
+                    <div>Rs {price}</div>
+                    <div>Qty: {qty}</div>
                     <div className = "cart-item-actions">
                         {/* Buttons */}
                         <img 
