@@ -9,7 +9,7 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
-    }
+    } 
 
     decreaseQuantity = () => {
         if(this.state.qty == 0){

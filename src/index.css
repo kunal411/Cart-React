@@ -8,6 +8,7 @@ body {
 }
 .cart-item {
   display: inline-flex;
+  width: 25%;
   margin: 20px 10px;
   border: 1px solid black;
   padding: 20px;
@@ -32,4 +33,9 @@ body {
 }
 .action-icons:hover {
   cursor: pointer;
+}
+
+.cart{
+  display: flex;
+  flex-direction: column;
 }
